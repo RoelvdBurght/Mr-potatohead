@@ -24,7 +24,7 @@
             android:layout_width="wrap_content"
             android:layout_height="325dp"
             android:contentDescription="@body"
-            android:visibility="visible"
+            android:visibility="invisible"
             app:srcCompat="@drawable/body" />
 
         <ImageView
@@ -40,7 +40,7 @@
             android:layout_width="wrap_content"
             android:layout_height="325dp"
             android:contentDescription="@shoes"
-            android:visibility="visible"
+            android:visibility="invisible"
             app:srcCompat="@drawable/shoes" />
 
         <ImageView
@@ -80,7 +80,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:contentDescription="@hat"
-            android:visibility="visible"
+            android:visibility="invisible"
             app:srcCompat="@drawable/hat" />
 
         <ImageView
