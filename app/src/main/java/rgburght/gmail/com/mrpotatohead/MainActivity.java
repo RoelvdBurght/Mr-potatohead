@@ -10,4 +10,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
+
+    public void checkClicked(android.view.View w) {
+        android.util.Log.d(tag:"potato", msg:"checkClicked: ");
+    }
+
 }
