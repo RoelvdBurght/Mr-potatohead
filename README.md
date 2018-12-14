@@ -5,4 +5,4 @@ Door de checkboxes te selecteren kan je nieuwe lichaamsdelen laten verschijnen/v
 
 ![](doc/pot1.png)
 ![](doc/pot2.png)
-![](doc/pot3.png)
+![](doc/po3.png)
