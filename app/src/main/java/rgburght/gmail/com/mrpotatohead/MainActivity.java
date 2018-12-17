@@ -9,33 +9,51 @@ import android.widget.ImageView;
 
 public class MainActivity extends AppCompatActivity {
 
+    private ImageView arms;
+    private ImageView body;
+    private ImageView shoes;
+    private ImageView nose;
+    private ImageView ears;
+    private ImageView eyes;
+    private ImageView glasses;
+    private ImageView eyebrows;
+    private ImageView hat;
+    private ImageView mouth;
+
+    boolean armsBool;
+    boolean bodyBool;
+    boolean shoesBool;
+    boolean noseBool;
+    boolean earsBool;
+    boolean eyesBool;
+    boolean glassesBool;
+    boolean eyebrowsBool;
+    boolean hatBool;
+    boolean mouthBool;
+
+    String tag = "Main";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ImageView arms = (ImageView) findViewById(R.id.arms);
-        ImageView body = (ImageView) findViewById(R.id.body);
-        ImageView shoes = (ImageView) findViewById(R.id.shoes);
-        ImageView nose = (ImageView) findViewById(R.id.nose);
-        ImageView ears = (ImageView) findViewById(R.id.ears);
-        ImageView eyes = (ImageView) findViewById(R.id.eyes);
-        ImageView glasses = (ImageView) findViewById(R.id.glasses);
-        ImageView eyebrows = (ImageView) findViewById(R.id.eyebrows);
-        ImageView hat = (ImageView) findViewById(R.id.hat);
-        ImageView mouth = (ImageView) findViewById(R.id.mouth);
+        arms = findViewById(R.id.arms);
+        body = findViewById(R.id.body);
+        shoes = findViewById(R.id.shoes);
+        nose = findViewById(R.id.nose);
+        ears = findViewById(R.id.ears);
+        eyes = findViewById(R.id.eyes);
+        glasses = findViewById(R.id.glasses);
+        eyebrows = findViewById(R.id.eyebrows);
+        hat = findViewById(R.id.hat);
+        mouth = findViewById(R.id.mouth);
 
-        boolean armsBool = false;
-        boolean bodyBool = false;
-        boolean shoesBool = false;
-        boolean noseBool = false;
-        boolean earsBool = false;
-        boolean eyesBool = false;
-        boolean glassesBool = false;
-        boolean eyebrowsBool = false;
-        boolean hatBool = false;
-        boolean mouthBool = false;
 
+        ImageView[] imageViews = {arms, body, shoes, nose, ears, eyes, glasses,
+                eyebrows, hat, mouth};
+
+
+        // if instances where saved, get their boolean value representing the visibility
         if (savedInstanceState != null) {
             armsBool = savedInstanceState.getBoolean("arms");
             bodyBool = savedInstanceState.getBoolean("body");
@@ -49,240 +67,130 @@ public class MainActivity extends AppCompatActivity {
             mouthBool = savedInstanceState.getBoolean("mouth");
         }
 
-        if (armsBool) {
-            arms.setVisibility(View.VISIBLE);
-        }
-        else {
-            arms.setVisibility(View.INVISIBLE);
-        }
+        boolean[] checkBools = {armsBool, bodyBool, shoesBool, noseBool, earsBool, glassesBool,
+                eyebrowsBool, mouthBool, hatBool, mouthBool};
 
-        if (bodyBool) {
-            body.setVisibility(View.VISIBLE);
-        }
-        else {
-            body.setVisibility(View.INVISIBLE);
-        }
-        if (shoesBool) {
-            shoes.setVisibility(View.VISIBLE);
-        }
-        else {
-            shoes.setVisibility(View.INVISIBLE);
-        }
-
-        if (noseBool) {
-            nose.setVisibility(View.VISIBLE);
-        }
-        else {
-            nose.setVisibility(View.INVISIBLE);
-        }
-
-        if (mouthBool) {
-            mouth.setVisibility(View.VISIBLE);
-        }
-        else {
-            mouth.setVisibility(View.INVISIBLE);
-        }
-
-        if (eyesBool) {
-            eyes.setVisibility(View.VISIBLE);
-        }
-        else {
-            eyes.setVisibility(View.INVISIBLE);
-        }
-
-        if (eyebrowsBool) {
-            eyebrows.setVisibility(View.VISIBLE);
-        }
-        else {
-            eyebrows.setVisibility(View.INVISIBLE);
-        }
-
-        if (earsBool) {
-            ears.setVisibility(View.VISIBLE);
-        }
-        else {
-            ears.setVisibility(View.INVISIBLE);
-        }
-
-        if (hatBool) {
-            hat.setVisibility(View.VISIBLE);
-        }
-        else {
-            hat.setVisibility(View.INVISIBLE);
-        }
-        if (glassesBool) {
-            glasses.setVisibility(View.VISIBLE);
-        }
-        else {
-            glasses.setVisibility(View.INVISIBLE);
+        // set the visibility according to the boolean values
+        int l = checkBools.length;
+        for (int i = 0; i < l; i ++) {
+            if (checkBools[i]) {
+                imageViews[i].setVisibility(View.VISIBLE);
+            }
+            else {
+                imageViews[i].setVisibility(View.INVISIBLE);
+            }
         }
     }
 
+    // Save the show/unshown views when exiting app/turning screen
     public void onSaveInstanceState(Bundle outState) {
 
-        ImageView arms = (ImageView) findViewById(R.id.arms);
-        ImageView body = (ImageView) findViewById(R.id.body);
-        ImageView shoes = (ImageView) findViewById(R.id.shoes);
-        ImageView nose = (ImageView) findViewById(R.id.nose);
-        ImageView ears = (ImageView) findViewById(R.id.ears);
-        ImageView eyes = (ImageView) findViewById(R.id.eyes);
-        ImageView glasses = (ImageView) findViewById(R.id.glasses);
-        ImageView eyebrows = (ImageView) findViewById(R.id.eyebrows);
-        ImageView hat = (ImageView) findViewById(R.id.hat);
-        ImageView mouth = (ImageView) findViewById(R.id.mouth);
+        arms = findViewById(R.id.arms);
+        body = findViewById(R.id.body);
+        shoes = findViewById(R.id.shoes);
+        nose = findViewById(R.id.nose);
+        ears = findViewById(R.id.ears);
+        eyes = findViewById(R.id.eyes);
+        glasses = findViewById(R.id.glasses);
+        eyebrows = findViewById(R.id.eyebrows);
+        hat = findViewById(R.id.hat);
+        mouth = findViewById(R.id.mouth);
 
-        if (arms.isShown()) {
-            outState.putBoolean("arms", true);
-        }
-        else {
-            outState.putBoolean("arms", false);
-        }
+        // put views in array as to not write millions of lines of code
+        ImageView[] imageViews = {arms, body, shoes, nose, ears, eyes, glasses
+                , eyebrows, hat, mouth};
+        String[] names = {"arms", "body", "shoes", "nose", "ears", "eyes", "glasses",
+                "eyebrows", "hat", "mouth"};
 
-        if (shoes.isShown()) {
-            outState.putBoolean("shoes", true);
+        // loop over the array and save the state using booleans
+        for (int i = 0; i < imageViews.length; i++) {
+            if (imageViews[i].isShown()) {
+                outState.putBoolean(names[i], true);
+            }
+            else {
+                outState.putBoolean(names[i], false);
+            }
         }
-        else {
-            outState.putBoolean("shoes", false);
-        }
-
-        if (nose.isShown()) {
-            outState.putBoolean("nose", true);
-        }
-        else {
-            outState.putBoolean("nose", false);
-        }
-
-        if (mouth.isShown()) {
-            outState.putBoolean("mouth", true);
-        }
-        else {
-            outState.putBoolean("mouth", false);
-        }
-
-        if (eyes.isShown()) {
-            outState.putBoolean("eyes", true);
-        }
-        else {
-            outState.putBoolean("eyes", false);
-        }
-
-        if (eyebrows.isShown()) {
-            outState.putBoolean("eyebrows", true);
-        }
-        else {
-            outState.putBoolean("eyebrows", false);
-        }
-
-        if (ears.isShown()) {
-            outState.putBoolean("ears", true);
-        }
-        else {
-            outState.putBoolean("ears", false);
-        }
-
-        if (glasses.isShown()) {
-            outState.putBoolean("glasses", true);
-        }
-        else {
-            outState.putBoolean("glasses", false);
-        }
-
-        if (hat.isShown()) {
-            outState.putBoolean("hat", true);
-        }
-        else {
-            outState.putBoolean("hat", false);
-        }
-
-        if (body.isShown()) {
-            outState.putBoolean("body", true);
-        }
-        else {
-            outState.putBoolean("body", false);
-        }
-        super.onSaveInstanceState(outState); // always call super
+        super.onSaveInstanceState(outState);
     }
 
+    // Gets called when a checkbox is clicked
+    // Makes the correct imageview visible/invisible accordingly
     public void checkClicked(View v) {
+
         CheckBox check = (CheckBox) v;
-        String text = check.getText().toString();
+        int id = v.getId();
 
-        ImageView arms = (ImageView) findViewById(R.id.arms);
-        ImageView body = (ImageView) findViewById(R.id.body);
-        ImageView shoes = (ImageView) findViewById(R.id.shoes);
-        ImageView nose = (ImageView) findViewById(R.id.nose);
-        ImageView ears = (ImageView) findViewById(R.id.ears);
-        ImageView eyes = (ImageView) findViewById(R.id.eyes);
-        ImageView glasses = (ImageView) findViewById(R.id.glasses);
-        ImageView eyebrows = (ImageView) findViewById(R.id.eyebrows);
-        ImageView hat = (ImageView) findViewById(R.id.hat);
-        ImageView mouth = (ImageView) findViewById(R.id.mouth);
-
-        // Als de gebruikte box aangevinkt is, zet bijbehorende view op zichtbaar
+        // If the checkbox is checked, make the view visible
         if (check.isChecked()) {
-            if (text.equals("Arms")) {
-                arms.setVisibility(View.VISIBLE);
-            }
-            if (text.equals("Body")) {
-                body.setVisibility(View.VISIBLE);
-            }
-            if (text.equals("Shoes")) {
-                shoes.setVisibility(View.VISIBLE);
-            }
-            if (text.equals("Nose")) {
-                nose.setVisibility(View.VISIBLE);
-            }
-            if (text.equals("Eyes")) {
-                eyes.setVisibility(View.VISIBLE);
-            }
-            if (text.equals("Glasses")) {
-                glasses.setVisibility(View.VISIBLE);
-            }
-            if (text.equals("Eyebrows")) {
-                eyebrows.setVisibility(View.VISIBLE);
-            }
-            if (text.equals("Hat")) {
-                hat.setVisibility(View.VISIBLE);
-            }
-            if (text.equals("Mouth")) {
-                mouth.setVisibility(View.VISIBLE);
-            }
-            if (text.equals("Ears")) {
-                ears.setVisibility(View.VISIBLE);
+            switch (id) {
+                case R.id.ckeckArms:
+                    arms.setVisibility(View.VISIBLE);
+                    break;
+                case R.id.checkBody:
+                    body.setVisibility(View.VISIBLE);
+                    break;
+                case R.id.checkShoes:
+                    shoes.setVisibility(View.VISIBLE);
+                    break;
+                case R.id.checkNose:
+                    nose.setVisibility(View.VISIBLE);
+                    break;
+                case R.id.checkEyes:
+                    eyes.setVisibility(View.VISIBLE);
+                    break;
+                case R.id.checkGlasses:
+                    glasses.setVisibility(View.VISIBLE);
+                    break;
+                case R.id.checkEyebrows:
+                    eyebrows.setVisibility(View.VISIBLE);
+                    break;
+                case R.id.checkHat:
+                    hat.setVisibility(View.VISIBLE);
+                    break;
+                case R.id.checkMouth:
+                    mouth.setVisibility(View.VISIBLE);
+                    break;
+                case R.id.checkEars:
+                    ears.setVisibility(View.VISIBLE);
+                    break;
             }
         }
 
-        // Als de gebruikte box aangevinkt is, zet bijbehorende view op ontzichtbaar
+        // if the checkbox is unchecked, make the view invisible
         if (!check.isChecked()) {
-            if (text.equals("Arms")) {
-                arms.setVisibility(View.INVISIBLE);
-            }
-            if (text.equals("Body")) {
-                body.setVisibility(View.INVISIBLE);
-            }
-            if (text.equals("Shoes")) {
-                shoes.setVisibility(View.INVISIBLE);
-            }
-            if (text.equals("Nose")) {
-                nose.setVisibility(View.INVISIBLE);
-            }
-            if (text.equals("Eyes")) {
-                eyes.setVisibility(View.INVISIBLE);
-            }
-            if (text.equals("Glasses")) {
-                glasses.setVisibility(View.INVISIBLE);
-            }
-            if (text.equals("Eyebrows")) {
-                eyebrows.setVisibility(View.INVISIBLE);
-            }
-            if (text.equals("Hat")) {
-                hat.setVisibility(View.INVISIBLE);
-            }
-            if (text.equals("Mouth")) {
-                mouth.setVisibility(View.INVISIBLE);
-            }
-            if (text.equals("Ears")) {
-                ears.setVisibility(View.INVISIBLE);
+
+            switch (id) {
+                case R.id.ckeckArms:
+                    arms.setVisibility(View.INVISIBLE);
+                    break;
+                case R.id.checkBody:
+                    body.setVisibility(View.INVISIBLE);
+                    break;
+                case R.id.checkShoes:
+                    shoes.setVisibility(View.INVISIBLE);
+                    break;
+                case R.id.checkNose:
+                    nose.setVisibility(View.INVISIBLE);
+                    break;
+                case R.id.checkEyes:
+                    eyes.setVisibility(View.INVISIBLE);
+                    break;
+                case R.id.checkGlasses:
+                    glasses.setVisibility(View.INVISIBLE);
+                    break;
+                case R.id.checkEyebrows:
+                    eyebrows.setVisibility(View.INVISIBLE);
+                    break;
+                case R.id.checkHat:
+                    hat.setVisibility(View.INVISIBLE);
+                    break;
+                case R.id.checkMouth:
+                    mouth.setVisibility(View.INVISIBLE);
+                    break;
+                case R.id.checkEars:
+                    ears.setVisibility(View.INVISIBLE);
+                    break;
             }
         }
     }
